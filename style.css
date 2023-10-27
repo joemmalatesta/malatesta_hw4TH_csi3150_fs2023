@@ -1,0 +1,71 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Poppins:wght@600;700;800&display=swap");
+
+/* Normalize this stuff */
+*{
+    font-family: "inter", sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.filter-container {
+  display: flex;
+  flex-direction: column;
+  margin: 0px 12px;
+}
+
+.filter-subcontainer{
+    display: flex;
+    gap: .5rem;
+}
+input {
+  padding: 0.25rem;
+}
+
+/* List containg all cars */
+.car-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+/* Single car listing */
+.car-listing {
+  padding: 0.25rem;
+  background-color: azure;
+  outline: 2px solid cadetblue;
+  border-radius: 10px;
+}
+.car-listing img{
+  width: 10rem
+}
+
+.car-listing button{
+  padding: .25rem;
+  background-color: cadetblue;
+  color: white;
+  text-align: center;
+  border-radius: 5px;
+  border: 2px solid darkcyan;
+}
+.car-listing button:hover{
+  background-color: darkcyan
+}
+
+
+.heading{
+    text-align: center;
+    font-size: 3rem;
+}
+.subheading{
+    text-align: center;
+    font-size: 1.2rem;
+}
+
+.filter-container button{
+  width: 10rem;
+  padding: .25rem
+}
+
+select{
+  padding: .25rem
+}

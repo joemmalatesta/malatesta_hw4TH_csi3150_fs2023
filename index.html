@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Used Cars</title>
+  </head>
+  <body>
+    <!-- Filter options  -->
+    <h1 class="heading">Filter used cars</h1>
+    <p class="subheading" style="margin-bottom: 1rem">Narrow down your options to find just what you want!</p>
+    <form class="filter-container">
+      <!-- Filter by year -->
+      <div class="filter-subcontainer">
+        <p>Year: from</p>
+        <input type="number" name="minYear" id="minYear" />
+        <p>to</p>
+        <input type="number" name="maxYear" id="maxYear" />
+      </div>
+
+      <!-- Filter by mileage -->
+      <div class="filter-subcontainer">
+        <label for="year">Max Mileage</label>
+        <input type="number" name="mileage" id="maxMilage" />
+      </div>
+
+      <!-- Filter by price -->
+      <div class="filter-subcontainer">
+        <p>Max Price</p>
+        <input type="number" name="maxPrice" id="maxPrice" />
+      </div>
+
+      <!-- Filter by color -->
+      <div class="filter-subcontainer">
+        <p>Color: </p>
+        <select name="colorFilter" id="colorFilter">
+          <option value="Any">Any</option>
+          <option value="Red">Red</option>
+          <option value="Silver">Silver</option>
+          <option value="White">White</option>
+          <option value="Black">Black</option>
+          <option value="Blue">Blue</option>
+          <option value="Gray">Gray</option>
+          <option value="Green">Green</option>       
+        </select>
+    </div>
+    <button id="filterForm" type="button">Submit</button>
+  </form>
+
+    <!-- Show used cars that are available -->
+    <h1 class="heading" style="margin-top: 1rem">Available cars</h1>
+    <p class="subheading" style="margin-bottom: 1rem">Great choices provided just for you!</p>
+    <!-- Wrapped where cars that fall into filter are dynamically added. -->
+    <section class="car-list" id="car-list"></section>
+    <script type="module" src="script.js"></script>
+  </body>
+</html>
