@@ -28,15 +28,19 @@ const minYearInput = document.getElementById("minYear");
 const maxYearInput = document.getElementById("maxYear");
 const maxMilageInput = document.getElementById("maxMilage");
 const maxPriceInput = document.getElementById("maxPrice");
-const colorFilterInput = document.getElementById("colorFilter");
+const colorFilterCheckboxes = document.querySelectorAll(
+  'input[name="colorFilter"]'
+);
 
 function filterCars() {
   let minYear = minYearInput.value || 0;
   let maxYear = maxYearInput.value || Infinity;
   let maxMilage = maxMilageInput.value || Infinity;
   let maxPrice = maxPriceInput.value || Infinity;
-  // Change this to a select box.
-  let color = colorFilterInput.value;
+  // Collect the selected colors from the checkboxes
+  const selectedColors = Array.from(colorFilterCheckboxes)
+    .filter((checkbox) => checkbox.checked)
+    .map((checkbox) => checkbox.value);
 
   // Clear the existing car list by removing all child elements
   while (carListContainer.firstChild) {
@@ -50,32 +54,42 @@ function filterCars() {
       car.mileage <= maxMilage &&
       car.year >= minYear &&
       car.year <= maxYear &&
-      car.price <= maxPrice && 
-      (color === "Any" || car.color == color)
+      car.price <= maxPrice &&
+      (selectedColors.length === 0 || selectedColors.includes(car.color))
     ) {
       const carComponent = createCarComponent(car);
       carListContainer.appendChild(carComponent);
     }
   });
   // If no car elements, tell user there is no cars to display and try again
-  if (!carListContainer.firstChild){
+  if (!carListContainer.firstChild) {
     const emptyText = document.createElement("h1");
-    emptyText.innerHTML = "No cars match that criteria.. try again"
-    emptyText.style.color = "red"
-    carListContainer.appendChild(emptyText)
+    emptyText.innerHTML = "No cars match that criteria.. try again";
+    emptyText.style.color = "red";
+    carListContainer.appendChild(emptyText);
   }
 }
 
-// Add event listener to the filter form when submit is clicked
-// We could alternatively add an event listener to each input element to update each time a value is changed.
-const filterForm = document.getElementById("filterForm");
-filterForm.addEventListener("click", function (e) {
+
+
+// Reset button logic
+function resetFilters() {
+  // Reset all filters
+  colorFilterCheckboxes.forEach(checkbox => checkbox.checked = false);
+  minYearInput.value = "";
+  maxYearInput.value = "";
+  maxMilageInput.value = "";
+  maxPriceInput.value = "";
+
+  // Show all cars
   filterCars();
-});
+}
 
 
+// DOM INTERACTION
+// Reset event listener
+resetButton.addEventListener("click", resetFilters);
+// Filter Event listener
+filterForm.addEventListener("click", filterCars);
 // Just the first time.. Show everything.
-usedCars.forEach((car) => {
-  const carComponent = createCarComponent(car);
-  carListContainer.appendChild(carComponent);
-});
+filterCars()

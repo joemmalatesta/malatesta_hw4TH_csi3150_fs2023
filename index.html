@@ -9,7 +9,9 @@
   <body>
     <!-- Filter options  -->
     <h1 class="heading">Filter used cars</h1>
-    <p class="subheading" style="margin-bottom: 1rem">Narrow down your options to find just what you want!</p>
+    <p class="subheading" style="margin-bottom: 1rem">
+      Narrow down your options to find just what you want!
+    </p>
     <form class="filter-container">
       <!-- Filter by year -->
       <div class="filter-subcontainer">
@@ -33,24 +35,42 @@
 
       <!-- Filter by color -->
       <div class="filter-subcontainer">
-        <p>Color: </p>
-        <select name="colorFilter" id="colorFilter">
-          <option value="Any">Any</option>
-          <option value="Red">Red</option>
-          <option value="Silver">Silver</option>
-          <option value="White">White</option>
-          <option value="Black">Black</option>
-          <option value="Blue">Blue</option>
-          <option value="Gray">Gray</option>
-          <option value="Green">Green</option>       
-        </select>
+        <label for="colorFilter">Colors: </label>
+        <div id="colorFilter">
+          <label>
+            <input type="checkbox" name="colorFilter" value="Red" /> Red
+          </label>
+          <label>
+            <input type="checkbox" name="colorFilter" value="Silver" /> Silver
+          </label>
+          <label>
+            <input type="checkbox" name="colorFilter" value="White" /> White
+          </label>
+          <label>
+            <input type="checkbox" name="colorFilter" value="Black" /> Black
+          </label>
+          <label>
+            <input type="checkbox" name="colorFilter" value="Blue" /> Blue
+          </label>
+          <label>
+            <input type="checkbox" name="colorFilter" value="Gray" /> Gray
+          </label>
+          <label>
+            <input type="checkbox" name="colorFilter" value="Green" /> Green
+          </label>
+        </div>
+      </div>
+      <div style="display: flex; gap: 1rem">
+      <button id="filterForm" type="button">Submit</button>
+      <button id="resetButton" onclick="resetFilters()">Reset</button>
     </div>
-    <button id="filterForm" type="button">Submit</button>
-  </form>
+    </form>
 
     <!-- Show used cars that are available -->
     <h1 class="heading" style="margin-top: 1rem">Available cars</h1>
-    <p class="subheading" style="margin-bottom: 1rem">Great choices provided just for you!</p>
+    <p class="subheading" style="margin-bottom: 1rem">
+      Great choices provided just for you!
+    </p>
     <!-- Wrapped where cars that fall into filter are dynamically added. -->
     <section class="car-list" id="car-list"></section>
     <script type="module" src="script.js"></script>
