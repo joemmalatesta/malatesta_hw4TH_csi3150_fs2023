@@ -57,6 +57,13 @@ function filterCars() {
       carListContainer.appendChild(carComponent);
     }
   });
+  // If no car elements, tell user there is no cars to display and try again
+  if (!carListContainer.firstChild){
+    const emptyText = document.createElement("h1");
+    emptyText.innerHTML = "No cars match that criteria.. try again"
+    emptyText.style.color = "red"
+    carListContainer.appendChild(emptyText)
+  }
 }
 
 // Add event listener to the filter form when submit is clicked
